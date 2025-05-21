@@ -1,0 +1,1060 @@
+/* ======================================== */
+/* Variáveis CSS (Exemplo - Adicione as suas ou complete) */
+/* ======================================== */
+
+/* style.css */
+/* ... (outros estilos) ... */
+
+#previsao-tempo-resultado h4 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-md);
+}
+
+.forecast-card {
+    background-color: #f8f9fa;
+    /* Cor de fundo mais clara */
+    border: 1px solid #dee2e6;
+    /* Borda sutil */
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    text-align: center;
+    width: calc(20% - var(--spacing-md) * 0.8);
+    /* Ajuste para 5 cards com gap */
+    min-width: 120px;
+    /* Largura mínima para evitar que fiquem muito estreitos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    /* Sombra mais suave */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.forecast-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.forecast-date {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    text-transform: capitalize;
+    /* Ex: Ter, 28/07 */
+}
+
+.forecast-icon {
+    width: 50px;
+    height: 50px;
+    margin: var(--spacing-sm) auto;
+    display: block;
+    /* Garante que o margin auto funcione para centralizar */
+}
+
+.forecast-temps {
+    font-size: 1.1em;
+    /* Um pouco maior para destaque */
+    margin-bottom: var(--spacing-sm);
+}
+
+.forecast-temps .temp-max {
+    font-weight: bold;
+    color: #e74c3c;
+    /* Tom de vermelho mais moderno */
+}
+
+.forecast-temps .temp-min {
+    color: #3498db;
+    /* Tom de azul mais moderno */
+}
+
+.forecast-description {
+    font-size: 0.85em;
+    color: var(--secondary-color);
+    /* Cinza para descrição */
+    min-height: 2.5em;
+    /* Garante altura para 2 linhas de descrição */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Adaptações para telas menores */
+@media (max-width: 992px) {
+
+    /* Ajuste para tablets e telas menores */
+    .forecast-card {
+        width: calc(33.333% - var(--spacing-md) * 0.7);
+        /* 3 cards por linha */
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    /* Ajuste para tablets menores */
+    .forecast-card {
+        width: calc(50% - var(--spacing-md) * 0.5);
+        /* 2 cards por linha */
+    }
+
+    .forecast-description {
+        min-height: auto;
+        /* Remove altura mínima no mobile se necessário */
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    /* Ajuste para smartphones */
+    .forecast-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .forecast-card {
+        width: 80%;
+        max-width: 280px;
+        /* Limita a largura máxima no mobile */
+        margin-bottom: var(--spacing-md);
+        /* Espaçamento entre cards empilhados */
+    }
+
+    #previsao-tempo-resultado h4 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ... (restante do style.css) ... */
+:root {
+    --primary-color: #007bff;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --secondary-color: #6c757d;
+    --orange-color: #fd7e14;
+    --teal-color: #20c997;
+    --purple-color: #6f42c1;
+
+    --text-color: #333;
+    --text-light-color: #fff;
+    --border-color: #ced4da;
+    --border-light-color: #e9ecef;
+    --border-radius-sm: 0.2rem;
+    --border-radius-md: 0.25rem;
+
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+
+    --list-item-bg: #f8f9fa;
+    --list-item-border-color: var(--primary-color);
+    --api-details-bg: #eef2f7;
+
+    --button-sm-padding-vertical: 0.25rem;
+    --button-sm-padding-horizontal: 0.5rem;
+    --font-size-sm: 0.875rem;
+    --transition-base: all 0.2s ease-in-out;
+
+    /* Cores para botões (exemplo) */
+    --success-border-color: var(--success-color);
+    --success-hover-color: #218838;
+}
+
+
+/* ======================================== */
+/* Estilos Globais e Base (Exemplo)      */
+/* ======================================== */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: var(--spacing-md);
+    background-color: #f4f7f6;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.section {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: #fff;
+    border: 1px solid var(--border-light-color);
+    border-radius: var(--border-radius-md);
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+/* ======================================== */
+/* Formulários                             */
+/* ======================================== */
+form label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    box-sizing: border-box;
+}
+
+form textarea {
+    min-height: 80px;
+}
+
+/* ======================================== */
+/* Botões (Base e Modificadores)            */
+/* ======================================== */
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: var(--text-light-color);
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: var(--border-radius-md);
+    transition: var(--transition-base);
+    text-decoration: none;
+    /* Para links estilizados como botões */
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.btn-warning {
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+    color: #212529;
+}
+
+/* Texto escuro para warning */
+.btn-info {
+    background-color: var(--info-color);
+    border-color: var(--info-color);
+}
+
+.btn-orange {
+    background-color: var(--orange-color);
+    border-color: var(--orange-color);
+}
+
+.btn-teal {
+    background-color: var(--teal-color);
+    border-color: var(--teal-color);
+}
+
+.btn-purple {
+    background-color: var(--purple-color);
+    border-color: var(--purple-color);
+}
+
+
+.btn-sm {
+    padding: var(--button-sm-padding-vertical) var(--button-sm-padding-horizontal);
+    font-size: var(--font-size-sm);
+    border-radius: var(--border-radius-sm);
+}
+
+button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* ======================================== */
+/* Notificações                           */
+/* ======================================== */
+#notificacoes-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050;
+    width: 300px;
+}
+
+.notificacao {
+    background-color: var(--info-color);
+    color: white;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.notificacao.fade-out {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.notificacao-success {
+    background-color: var(--success-color);
+}
+
+.notificacao-error {
+    background-color: var(--danger-color);
+}
+
+.notificacao-warning {
+    background-color: var(--warning-color);
+    color: #212529;
+}
+
+
+/* ======================================== */
+/* Garage List (Layout Atualizado)          */
+/* ======================================== */
+#lista-garagem {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#lista-garagem li.veiculo-list-item {
+    background: var(--list-item-bg);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--list-item-border-color);
+    /* Cor padrão da borda */
+    flex-wrap: wrap;
+}
+
+/* Cores específicas por tipo de veículo (exemplo) */
+#lista-garagem li.veiculo-carro {
+    border-left-color: var(--primary-color);
+}
+
+#lista-garagem li.veiculo-carroesportivo {
+    border-left-color: var(--orange-color);
+}
+
+#lista-garagem li.veiculo-caminhao {
+    border-left-color: var(--secondary-color);
+}
+
+
+#lista-garagem li .veiculo-info {
+    flex-grow: 1;
+    margin-right: var(--spacing-md);
+}
+
+#lista-garagem li .veiculo-info p {
+    margin: 0;
+}
+
+#lista-garagem li .veiculo-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--spacing-sm);
+}
+
+#lista-garagem p:only-child {
+    font-style: italic;
+    color: var(--text-color);
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+/* ======================================== */
+/* Detalhes do Veículo                     */
+/* ======================================== */
+#detalhes-veiculo-section h2,
+#detalhes-veiculo-section h3 {
+    border-bottom: 1px solid var(--border-light-color);
+    padding-bottom: var(--spacing-sm);
+}
+
+.interaction-section,
+.maintenance-details {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--list-item-bg);
+    border-radius: var(--border-radius-sm);
+}
+
+#detalhes-veiculo-botoes button {
+    margin-right: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+/*
+.btn-especifico { /* Para botões turbo, carregar, descarregar */
+/* Estilos adicionais se necessário */
+
+
+#lista-historico li,
+#lista-agendamentos li {
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed var(--border-light-color);
+}
+
+#lista-historico li:last-child,
+#lista-agendamentos li:last-child {
+    border-bottom: none;
+}
+
+/* ======================================== */
+/* Weather Planner Section (Novo)           */
+/* ======================================== */
+#weather-planner-section {
+    background-color: #e7f5ff;
+    border: 1px solid #b3d7ff;
+    border-radius: var(--border-radius-md);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+}
+
+#weather-planner-section h2 {
+    color: #0056b3;
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
+    border-bottom: 1px solid #b3d7ff;
+    padding-bottom: var(--spacing-sm);
+}
+
+.weather-form {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.weather-form label {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.weather-form input[type="text"] {
+    flex-grow: 1;
+    min-width: 150px;
+    margin-bottom: 0;
+}
+
+.weather-form button {
+    margin: 0;
+    flex-shrink: 0;
+}
+
+#previsao-tempo-resultado {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: #fff;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-light-color);
+    min-height: 50px;
+    text-align: left;
+}
+
+#previsao-tempo-resultado h4 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+#previsao-tempo-resultado p {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.weather-details {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.weather-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--list-item-bg);
+    border-radius: 50%;
+}
+
+.weather-text {
+    flex-grow: 1;
+}
+
+/* ======================================== */
+/* API Details Section                      */
+/* ======================================== */
+#api-details-section {
+    background-color: var(--api-details-bg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+}
+
+#api-details-section h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+#api-details-content p {
+    margin-bottom: var(--spacing-sm);
+}
+
+
+/* ======================================== */
+/* Media Queries                           */
+/* ======================================== */
+@media (max-width: 768px) {
+    #lista-garagem li.veiculo-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #lista-garagem li .veiculo-actions {
+        margin-top: var(--spacing-md);
+        width: 100%;
+    }
+
+    #lista-garagem li .veiculo-actions button {
+        flex-grow: 1;
+        /* Faz botões ocuparem espaço igual */
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .section {
+        padding: var(--spacing-md);
+    }
+
+    .weather-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .weather-form label {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .weather-form input[type="text"] {
+        width: 100%;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .weather-form button {
+        align-self: flex-start;
+    }
+
+    .weather-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .weather-icon {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    #detalhes-veiculo-botoes {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #detalhes-veiculo-botoes button {
+        width: 100%;
+        margin-right: 0;
+        /* Remove margem direita no mobile */
+    }
+
+    #notificacoes-container {
+        width: calc(100% - 40px);
+        /* Largura total menos padding */
+        right: 20px;
+        left: 20px;
+        /* Centraliza ou ocupa largura */
+    }
+}
+
+/* style.css */
+/* ... (outros estilos) ... */
+
+#previsao-tempo-resultado h4 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+    /* Aumentei um pouco */
+    color: var(--primary-color);
+    text-align: center;
+    /* Centralizei o título da previsão */
+}
+
+.forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os cards quebrem para a próxima linha */
+    gap: var(--spacing-md);
+    justify-content: center;
+    /* Centraliza os cards se não preencherem toda a largura */
+    margin-top: var(--spacing-md);
+}
+
+.forecast-card {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    text-align: center;
+    width: calc(20% - var(--spacing-md));
+    /* Aproximadamente 5 cards por linha, ajustando o gap */
+    min-width: 130px;
+    /* Largura mínima para cada card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+}
+
+.forecast-date {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.forecast-icon {
+    width: 50px;
+    /* Tamanho do ícone da previsão diária */
+    height: 50px;
+    margin: var(--spacing-sm) auto;
+}
+
+.forecast-temps {
+    font-size: 1.1em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.forecast-temps .temp-max {
+    font-weight: bold;
+    color: #d9534f;
+    /* Vermelho para máxima */
+}
+
+.forecast-temps .temp-min {
+    color: #5bc0de;
+    /* Azul para mínima */
+}
+
+.forecast-description {
+    font-size: 0.85em;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+}
+
+
+/* Adaptações para telas menores */
+@media (max-width: 900px) {
+    .forecast-card {
+        width: calc(33.333% - var(--spacing-md));
+        /* 3 cards por linha */
+    }
+}
+
+@media (max-width: 600px) {
+    .forecast-container {
+        flex-direction: column;
+        /* Cards um abaixo do outro */
+        align-items: center;
+    }
+
+    .forecast-card {
+        width: 80%;
+        /* Cards ocupam mais largura no mobile */
+        max-width: 300px;
+    }
+
+    #previsao-tempo-resultado h4 {
+        font-size: 1.2rem;
+    }
+}
+
+/* style.css */
+
+/* ======================================== */
+/* ... (Suas variáveis CSS e estilos globais existentes) ... */
+/* ======================================== */
+
+/* ... (Estilos para Formulários, Botões, Notificações, Garage List, etc.) ... */
+
+
+/* ======================================== */
+/* Weather Planner Section                  */
+/* ======================================== */
+#weather-planner-section {
+    background-color: #e7f5ff;
+    /* Um azul claro, como no seu exemplo original para esta seção */
+    border: 1px solid #b3d7ff;
+    /* Uma borda correspondente */
+    border-radius: var(--border-radius-md);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+}
+
+/* Estilos para h2 dentro da seção de planejar viagem */
+#weather-planner-section h2 {
+    color: #0056b3;
+    /* Um azul mais escuro para o título, consistente com o tema da seção */
+    margin-bottom: var(--spacing-lg);
+    /* Espaçamento abaixo do título */
+    text-align: left;
+    /* Alinhamento à esquerda, como no seu exemplo original */
+    border-bottom: 1px solid #b3d7ff;
+    /* Linha separadora abaixo do título */
+    padding-bottom: var(--spacing-sm);
+    /* Pequeno padding abaixo do texto do título, antes da linha */
+    font-size: 1.5rem;
+    /* Tamanho de fonte padrão para h2 ou um pouco maior se desejar destaque */
+}
+
+/* Estilos para o formulário dentro da seção de planejar viagem */
+.weather-form {
+    display: flex;
+    align-items: center;
+    /* Alinha verticalmente label, input e botão */
+    gap: var(--spacing-md);
+    /* Espaço entre os elementos do formulário */
+    flex-wrap: wrap;
+    /* Permite que os itens quebrem linha em telas menores */
+    margin-bottom: var(--spacing-lg);
+    /* Espaço abaixo do formulário, antes dos resultados */
+}
+
+.weather-form label {
+    margin-bottom: 0;
+    /* Remove a margem inferior padrão de labels de formulário, já que está inline */
+    flex-shrink: 0;
+    /* Impede que o label encolha */
+    font-weight: bold;
+    /* Mantém o peso da fonte para labels */
+    color: var(--text-color);
+    /* Cor padrão de texto para o label */
+}
+
+.weather-form input[type="text"] {
+    flex-grow: 1;
+    /* Faz o input ocupar o espaço restante */
+    min-width: 150px;
+    /* Largura mínima para o input */
+    margin-bottom: 0;
+    /* Remove a margem inferior padrão de inputs, já que está inline */
+    /* Outros estilos de input (padding, border, border-radius) já devem ser herdados dos estilos globais de formulário */
+}
+
+.weather-form button {
+    margin: 0;
+    /* Remove margens padrão do botão, se houver */
+    flex-shrink: 0;
+    /* Impede que o botão encolha */
+    /* Estilos de botão (cores, padding, etc.) devem ser aplicados pela classe .btn e .btn-primary */
+}
+
+/* Estilos para a área de resultado da previsão (já fornecidos anteriormente, mas incluídos para contexto) */
+#previsao-tempo-resultado {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: #fff;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--border-light-color);
+    min-height: 50px;
+    text-align: left;
+    /* Ou center, dependendo do design dos resultados */
+}
+
+#previsao-tempo-resultado h4 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.weather-current-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-light-color);
+    border-radius: var(--border-radius-sm);
+    background-color: #f9f9f9;
+}
+
+.weather-main-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-light-color);
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.weather-icon-current {
+    width: 80px;
+    height: 80px;
+}
+
+.weather-temp-current {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.weather-desc-current {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    margin-left: var(--spacing-sm);
+}
+
+.weather-extra-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm) var(--spacing-md);
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: 0.9em;
+}
+
+.weather-extra-info p {
+    margin: 0.2em 0;
+    color: var(--text-color);
+    background-color: #fff;
+    padding: 0.4em;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid #eee;
+}
+
+
+/* ======================================== */
+/* ... (Restante dos seus estilos, incluindo Media Queries) ... */
+/* ======================================== */
+
+/* Media Queries para o formulário de clima, se necessário um ajuste mais fino */
+@media (max-width: 600px) {
+    /* Seus estilos existentes para .container, h1, .section, etc. */
+
+    .weather-form {
+        flex-direction: column;
+        /* Empilha os elementos do formulário */
+        align-items: stretch;
+        /* Faz os elementos ocuparem a largura total */
+    }
+
+    .weather-form label {
+        margin-bottom: var(--spacing-sm);
+        /* Adiciona espaço abaixo do label quando empilhado */
+    }
+
+    .weather-form input[type="text"] {
+        width: 100%;
+        /* Garante que o input ocupe toda a largura */
+        margin-bottom: var(--spacing-md);
+        /* Espaço abaixo do input antes do botão */
+    }
+
+    .weather-form button {
+        align-self: flex-start;
+        /* Alinha o botão à esquerda quando empilhado, ou 'stretch' para largura total */
+    }
+
+    /* Seus estilos existentes para .weather-details, .weather-icon, etc. */
+}
+
+#previsao-tempo-resultado h4 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.weather-current-details {
+    display: flex;
+    flex-direction: column;
+    /* Empilha informações principais e extras */
+    align-items: center;
+    /* Centraliza os blocos */
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-light-color);
+    border-radius: var(--border-radius-sm);
+    background-color: #f9f9f9;
+    /* Fundo levemente diferente */
+}
+
+.weather-main-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-light-color);
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* Para telas pequenas */
+}
+
+.weather-icon-current {
+    width: 80px;
+    /* Ícone maior para clima atual */
+    height: 80px;
+}
+
+.weather-temp-current {
+    font-size: 2.5em;
+    /* Temperatura bem destacada */
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.weather-desc-current {
+    font-size: 1.2em;
+    color: var(--secondary-color);
+    text-transform: capitalize;
+    margin-left: var(--spacing-sm);
+    /* Pequeno espaço após a temperatura */
+}
+
+.weather-extra-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Layout responsivo para detalhes extras */
+    gap: var(--spacing-sm) var(--spacing-md);
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: 0.9em;
+}
+
+.weather-extra-info p {
+    margin: 0.2em 0;
+    color: var(--text-color);
+    background-color: #fff;
+    padding: 0.4em;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid #eee;
+}
+
+/* Adaptações para telas menores */
+@media (max-width: 600px) {
+    .weather-main-info {
+        flex-direction: column;
+        /* Ícone, temp e desc um abaixo do outro */
+        text-align: center;
+    }
+
+    .weather-desc-current {
+        margin-left: 0;
+    }
+
+    .weather-temp-current {
+        font-size: 2em;
+    }
+
+    .weather-icon-current {
+        width: 60px;
+        height: 60px;
+    }
+
+    .weather-extra-info {
+        grid-template-columns: 1fr;
+        /* Uma coluna no mobile */
+    }
+}
+
+/* Os estilos .forecast-container, .forecast-card, etc., podem ser mantidos
+   se você planeja reativar a previsão de 5 dias, ou removidos caso contrário.
+   Para este exercício focado no clima atual, eles não são diretamente usados
+   pela função exibirResultadoPrevisaoTempo.
+*/
